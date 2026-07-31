@@ -25,6 +25,8 @@ import os
 from decimal import Decimal, InvalidOperation
 from datetime import date, time
 
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 from app.models import ParseResult
@@ -151,9 +153,6 @@ async def extract_from_image(image_bytes: bytes, content_type: str) -> ParseResu
         )
 
     try:
-        from google import genai
-        from google.genai import types
-
         client = genai.Client(api_key=api_key)
 
         # Convertir imagen a base64 para el SDK
