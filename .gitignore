@@ -42,3 +42,6 @@ desktop.ini
 # Logs
 *.log
 logs/
+
+# Local Study Guide (private)
+GUIA_ESTUDIO.md
