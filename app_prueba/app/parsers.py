@@ -85,25 +85,25 @@ def _to_time(raw: str | None) -> time | None:
 #   Estado             : Aprobada
 
 _ANDINO_TIPO = re.compile(
-    r"Tipo\s+de\s+movimiento\s*:\s*(.+)", re.IGNORECASE
+    r"Tipo\s+de\s+movimiento\s*:[ \t]*(.+)", re.IGNORECASE
 )
 _ANDINO_CONCEPTO = re.compile(
-    r"Concepto\s*:\s*(.+)", re.IGNORECASE
+    r"Concepto\s*:[ \t]*(.+)", re.IGNORECASE
 )
 _ANDINO_VALOR = re.compile(
-    r"Valor\s*:\s*USD\s+([\d.,]+)", re.IGNORECASE
+    r"Valor\s*:[ \t]*USD\s+([\d.,]+)", re.IGNORECASE
 )
 _ANDINO_FECHA = re.compile(
-    r"Fecha\s*:\s*(\d{2}/\d{2}/\d{4})", re.IGNORECASE
+    r"Fecha\s*:[ \t]*(\d{2}/\d{2}/\d{4})", re.IGNORECASE
 )
 _ANDINO_HORA = re.compile(
-    r"Hora\s*:\s*(\d{2}:\d{2}(?::\d{2})?)", re.IGNORECASE
+    r"Hora\s*:[ \t]*(\d{2}:\d{2}(?::\d{2})?)", re.IGNORECASE
 )
 _ANDINO_REFERENCIA = re.compile(
-    r"Referencia\s*:\s*(\S+)", re.IGNORECASE
+    r"Referencia\s*:[ \t]*(\S+)", re.IGNORECASE
 )
 _ANDINO_ESTADO = re.compile(
-    r"Estado\s*:\s*(.+)", re.IGNORECASE
+    r"Estado\s*:[ \t]*(.+)", re.IGNORECASE
 )
 
 
@@ -186,22 +186,22 @@ def _parse_litoral(texto: str) -> ParseResult:
 #   - Estado: Procesada
 
 _PRODUBANK_OPERACION = re.compile(
-    r"-\s*Operacion\s*:\s*(.+)", re.IGNORECASE
+    r"-\s*Operacion\s*:[ \t]*(.+)", re.IGNORECASE
 )
 _PRODUBANK_MONTO = re.compile(
-    r"-\s*Monto\s*:\s*USD\s+([\d.,]+)", re.IGNORECASE
+    r"-\s*Monto\s*:[ \t]*USD\s+([\d.,]+)", re.IGNORECASE
 )
 _PRODUBANK_FECHA = re.compile(
-    r"-\s*Fecha\s+de\s+proceso\s*:\s*(\d{2}/\d{2}/\d{4})", re.IGNORECASE
+    r"-\s*Fecha\s+de\s+proceso\s*:[ \t]*(\d{2}/\d{2}/\d{4})", re.IGNORECASE
 )
 _PRODUBANK_HORA = re.compile(
-    r"-\s*Hora\s+de\s+proceso\s*:\s*(\d{2}:\d{2}(?::\d{2})?)", re.IGNORECASE
+    r"-\s*Hora\s+de\s+proceso\s*:[ \t]*(\d{2}:\d{2}(?::\d{2})?)", re.IGNORECASE
 )
 _PRODUBANK_REFERENCIA = re.compile(
-    r"-\s*Nro\.\s+de\s+referencia\s*:\s*(\S+)", re.IGNORECASE
+    r"-\s*Nro\.\s+de\s+referencia\s*:[ \t]*(\S+)", re.IGNORECASE
 )
 _PRODUBANK_ESTADO = re.compile(
-    r"-\s*Estado\s*:\s*(.+)", re.IGNORECASE
+    r"-\s*Estado\s*:[ \t]*(.+)", re.IGNORECASE
 )
 
 

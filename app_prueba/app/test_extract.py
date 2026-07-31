@@ -135,7 +135,7 @@ class TestExtractEndpoint:
         """Simula extracción completa desde imagen PNG."""
         fake_image = _make_fake_image()
 
-        with patch("app.gemini_client.os.getenv", return_value="fake-api-key"), \
+        with patch("app.gemini_client.os.getenv", side_effect=lambda key, default=None: "fake-api-key" if key == "GEMINI_API_KEY" else None), \
              patch("app.gemini_client.genai") as mock_genai:
 
             mock_client = MagicMock()
@@ -190,7 +190,7 @@ class TestExtractEndpoint:
         }
         fake_image = _make_fake_image()
 
-        with patch("app.gemini_client.os.getenv", return_value="fake-key"), \
+        with patch("app.gemini_client.os.getenv", side_effect=lambda key, default=None: "fake-key" if key == "GEMINI_API_KEY" else None), \
              patch("app.gemini_client.genai") as mock_genai:
 
             mock_client = MagicMock()
@@ -214,7 +214,7 @@ class TestExtractEndpoint:
         """Imágenes JPEG también deben procesarse."""
         fake_image = b"\xff\xd8\xff" + b"\x00" * 100  # Firma JPEG
 
-        with patch("app.gemini_client.os.getenv", return_value="fake-key"), \
+        with patch("app.gemini_client.os.getenv", side_effect=lambda key, default=None: "fake-key" if key == "GEMINI_API_KEY" else None), \
              patch("app.gemini_client.genai") as mock_genai:
 
             mock_client = MagicMock()

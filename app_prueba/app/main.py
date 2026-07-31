@@ -51,6 +51,19 @@ async def health() -> str:
         "estructurados. Los campos que no puedan extraerse con certeza se "
         "devuelven como null."
     ),
+    openapi_extra={
+        "requestBody": {
+            "content": {
+                "text/plain": {
+                    "schema": {
+                        "type": "string",
+                        "description": "Texto plano del correo bancario"
+                    }
+                }
+            },
+            "required": True
+        }
+    }
 )
 async def parse_endpoint(request: Request) -> ParseResult:
     """Parsea un correo de notificación bancaria en texto plano.

@@ -28,6 +28,10 @@ from datetime import date, time
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+try:
+    from groq import Groq
+except ImportError:
+    Groq = None
 
 from app.models import ParseResult
 
@@ -127,7 +131,7 @@ def _parse_gemini_response(raw_json: str) -> ParseResult:
 
 
 async def extract_from_image(image_bytes: bytes, content_type: str) -> ParseResult:
-    """Envía una imagen a Gemini Vision y extrae los datos del comprobante.
+    """Envía una imagen a Groq Vision o Gemini Vision y extrae los datos del comprobante.
 
     Args:
         image_bytes: Contenido binario de la imagen JPG/PNG.
@@ -135,29 +139,55 @@ async def extract_from_image(image_bytes: bytes, content_type: str) -> ParseResu
 
     Returns:
         ParseResult con los datos extraídos. Campos ilegibles = None.
-
-    Raises:
-        HTTPException 503: Si la API key no está configurada.
-        HTTPException 502: Si Gemini devuelve un error inesperado.
     """
     from fastapi import HTTPException
 
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
+    groq_key = os.getenv("GROQ_API_KEY")
+    gemini_key = os.getenv("GEMINI_API_KEY")
+
+    if not groq_key and not gemini_key:
         raise HTTPException(
             status_code=503,
-            detail=(
-                "GEMINI_API_KEY no configurada. "
-                "Define la variable de entorno antes de usar /extract."
-            ),
+            detail="Ni GROQ_API_KEY ni GEMINI_API_KEY configuradas en el entorno.",
         )
 
+    # Convertir imagen a base64
+    image_b64 = base64.b64encode(image_bytes).decode("utf-8")
+
+    # --- RUTA 1: GROQ VISION ---
+    if groq_key and Groq:
+        try:
+            client = Groq(api_key=groq_key)
+            completion = client.chat.completions.create(
+                model="qwen/qwen3.6-27b",
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": _EXTRACTION_PROMPT},
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:{content_type};base64,{image_b64}"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                temperature=0.0,
+                response_format={"type": "json_object"}
+            )
+            raw_text = completion.choices[0].message.content or ""
+            return _parse_gemini_response(raw_text.strip())
+        except Exception as exc:
+            raise HTTPException(
+                status_code=502,
+                detail=f"Error al comunicarse con la API de Groq Vision: {str(exc)}",
+            ) from exc
+
+    # --- RUTA 2: GEMINI VISION ---
     try:
-        client = genai.Client(api_key=api_key)
-
-        # Convertir imagen a base64 para el SDK
-        image_b64 = base64.b64encode(image_bytes).decode("utf-8")
-
+        client = genai.Client(api_key=gemini_key)
         response = client.models.generate_content(
             model="gemini-2.0-flash",
             contents=[
@@ -175,13 +205,12 @@ async def extract_from_image(image_bytes: bytes, content_type: str) -> ParseResu
                 )
             ],
             config=types.GenerateContentConfig(
-                temperature=0.0,   # Determinismo máximo
+                temperature=0.0,
                 max_output_tokens=512,
             ),
         )
 
         raw_text = response.text or ""
-        # Limpiar posibles bloques markdown que Gemini a veces agrega
         raw_text = raw_text.strip()
         if raw_text.startswith("```"):
             raw_text = raw_text.split("\n", 1)[-1]
@@ -189,8 +218,6 @@ async def extract_from_image(image_bytes: bytes, content_type: str) -> ParseResu
 
         return _parse_gemini_response(raw_text.strip())
 
-    except HTTPException:
-        raise
     except Exception as exc:
         raise HTTPException(
             status_code=502,
