@@ -1,0 +1,135 @@
+========================================================================
+De: notificaciones@bancoandino.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Notificacion de movimiento en su cuenta
+Fecha: Mar, 14 Jul 2026 14:28:11 -0500
+
+Estimado cliente,
+
+Le informamos que se ha registrado el siguiente movimiento en su cuenta
+Corriente terminada en 4471:
+
+  Tipo de movimiento : Credito
+  Concepto           : Transferencia recibida
+  Valor              : USD 45.50
+  Fecha              : 14/07/2026
+  Hora               : 14:28
+  Referencia         : 0294817365
+  Estado             : Aprobada
+
+Este es un mensaje automatico generado por nuestro sistema de alertas.
+Por favor no responda a este correo.
+
+Banco Andino S.A.
+Servicio de Notificaciones Electronicas
+
+========================================================================
+De: alertas@bancodellitoral.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Alerta de transaccion - Cuenta ***2210
+Fecha: Mar, 14 Jul 2026 16:05:47 -0500
+
+Hola,
+
+Le confirmamos que el dia 14/07/2026 a las 16:05 su cuenta de Ahorros
+terminada en 2210 recibio una acreditacion por USD 128.75 correspondiente
+a una transferencia interbancaria recibida. La operacion quedo registrada
+bajo el numero de referencia 883014925 y el valor ya se encuentra
+disponible en su saldo.
+
+Si usted no reconoce esta operacion, comuniquese de inmediato con nuestra
+linea de atencion al cliente.
+
+Banco del Litoral
+Banca Electronica
+
+========================================================================
+De: avisos@produbank.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Produbank | Movimiento registrado en su cuenta
+Fecha: Mie, 15 Jul 2026 09:41:02 -0500
+
+MOVIMIENTO REGISTRADO
+
+- Cuenta: ****7788
+- Operacion: Acreditacion por transferencia
+- Monto: USD 1.234,56
+- Fecha de proceso: 15/07/2026
+- Hora de proceso: 09:40
+- Nro. de referencia: 4471209833
+- Canal: Banca en linea
+- Estado: Procesada
+
+Produbank
+Servicio de notificaciones automaticas
+
+========================================================================
+De: notificaciones@bancoandino.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Notificacion de movimiento en su cuenta
+Fecha: Mie, 15 Jul 2026 11:12:39 -0500
+
+Estimado cliente,
+
+Le informamos que se ha registrado el siguiente movimiento en su cuenta
+Corriente terminada en 4471:
+
+  Tipo de movimiento : Debito
+  Concepto           : Pago de servicios
+  Valor              : USD 62.00
+  Fecha              : 15/07/2026
+  Hora               : 11:12
+  Referencia         : 0295044182
+  Estado             : Aprobada
+
+Este es un mensaje automatico generado por nuestro sistema de alertas.
+Por favor no responda a este correo.
+
+Banco Andino S.A.
+Servicio de Notificaciones Electronicas
+
+========================================================================
+De: alertas@bancodellitoral.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Alerta de transaccion - Cuenta ***2210
+Fecha: Jue, 16 Jul 2026 10:47:03 -0500
+
+Hola,
+
+Le confirmamos que el dia 16/07/2026 a las 10:46 su cuenta de Ahorros
+terminada en 2210 recibio una acreditacion por USD 310.00 correspondiente
+a una transferencia recibida desde otra entidad. El valor ya se encuentra
+disponible en su saldo.
+
+Si usted no reconoce esta operacion, comuniquese de inmediato con nuestra
+linea de atencion al cliente.
+
+Banco del Litoral
+Banca Electronica
+
+========================================================================
+De: notificaciones@bancoandino.ec
+Para: contacto@minimarketlaesquina.ec
+Asunto: Reenvio de notificacion: Notificacion de movimiento en su cuenta
+Fecha: Mar, 14 Jul 2026 14:31:24 -0500
+
+Estimado cliente,
+
+Le informamos que se ha registrado el siguiente movimiento en su cuenta
+Corriente terminada en 4471:
+
+  Tipo de movimiento : Credito
+  Concepto           : Transferencia recibida
+  Valor              : USD 45.50
+  Fecha              : 14/07/2026
+  Hora               : 14:28
+  Referencia         : 0294817365
+  Estado             : Aprobada
+
+Este es un mensaje automatico generado por nuestro sistema de alertas.
+Por favor no responda a este correo.
+
+Banco Andino S.A.
+Servicio de Notificaciones Electronicas
+
+========================================================================
